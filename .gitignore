@@ -7,7 +7,7 @@ server/node_modules/
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+yarn-error.log*--
 
 # Dependency directories
 jspm_packages/
@@ -17,7 +17,7 @@ jspm_packages/
 
 # dotenv environment variables
 .env
-.env.*
+# .env.*
 
 # Build output
 client/build/
