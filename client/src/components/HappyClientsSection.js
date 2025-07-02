@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from '../index';
 
+const getImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http')) return url;
+  return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+};
+
 const HappyClientsSection = () => {
   const [clients, setClients] = useState([]);
 
@@ -29,7 +35,7 @@ const HappyClientsSection = () => {
             >
               {/* Client image, overlapping top */}
               <img
-                src={client.image}
+                src={getImageUrl(client.image)}
                 alt={client.name}
                 className="w-16 h-16 object-cover rounded-full border-4 border-white shadow absolute left-1/2 -top-8 -translate-x-1/2"
               />

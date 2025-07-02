@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from '../index';
 
+const getImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http')) return url;
+  return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+};
+
 const ProjectsSection = () => {
   const [projects, setProjects] = useState([]);
 
@@ -30,7 +36,7 @@ const ProjectsSection = () => {
               className="bg-white rounded-2xl shadow-lg flex flex-col items-stretch overflow-hidden transition hover:shadow-2xl w-60 min-w-[240px] max-w-[240px] h-[320px] -translate-x-6"
             >
               <img
-                src={project.image}
+                src={getImageUrl(project.image)}
                 alt={project.name}
                 className="w-full h-40 object-cover rounded-t-2xl"
               />
