@@ -4,6 +4,8 @@ import { API_BASE_URL } from '../index';
 
 const getImageUrl = (url) => {
   if (!url) return '';
+  if (url.startsWith('http://localhost:5000')) return url.replace('http://localhost:5000', API_BASE_URL);
+  if (url.startsWith('localhost:5000')) return url.replace('localhost:5000', API_BASE_URL);
   if (url.startsWith('http')) return url;
   return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
 };
