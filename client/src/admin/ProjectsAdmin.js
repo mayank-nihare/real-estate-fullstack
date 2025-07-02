@@ -4,6 +4,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API_BASE_URL } from '../index';
 
+const getImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http://localhost:5000')) return url.replace('http://localhost:5000', API_BASE_URL);
+  if (url.startsWith('localhost:5000')) return url.replace('localhost:5000', API_BASE_URL);
+  if (url.startsWith('http')) return url;
+  return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+};
+
 const ProjectsAdmin = () => {
   const [projects, setProjects] = useState([]);
   const [form, setForm] = useState({ name: "", description: "", image: null });
@@ -122,7 +130,7 @@ const ProjectsAdmin = () => {
             className="bg-white rounded shadow p-4 flex flex-col items-center"
           >
             <img
-              src={project.image}
+              src={getImageUrl(project.image)}
               alt={project.name}
               className="w-full h-32 object-cover rounded mb-2"
             />

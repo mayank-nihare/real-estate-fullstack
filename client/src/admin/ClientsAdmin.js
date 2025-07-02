@@ -4,6 +4,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API_BASE_URL } from '../index';
 
+const getImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http://localhost:5000')) return url.replace('http://localhost:5000', API_BASE_URL);
+  if (url.startsWith('localhost:5000')) return url.replace('localhost:5000', API_BASE_URL);
+  if (url.startsWith('http')) return url;
+  return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+};
+
 const ClientsAdmin = () => {
   const [clients, setClients] = useState([]);
   const [form, setForm] = useState({
@@ -135,7 +143,7 @@ const ClientsAdmin = () => {
             className="bg-white rounded shadow p-4 flex flex-col items-center"
           >
             <img
-              src={client.image}
+              src={getImageUrl(client.image)}
               alt={client.name}
               className="w-20 h-20 object-cover rounded-full mb-2 border-2 border-blue-200"
             />
