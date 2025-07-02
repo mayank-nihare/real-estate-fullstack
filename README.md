@@ -108,7 +108,7 @@ npm install
 Create a `.env` file in the `client` directory with the following content:
 
 ```
-REACT_APP_API_URL=https://real-estate-fullstack-9cgs.onrender.com
+REACT_APP_API_URL=https://real-estate-fullstack-olur.onrender.com
 ```
 
 This ensures the frontend will use the deployed backend for all API requests.
