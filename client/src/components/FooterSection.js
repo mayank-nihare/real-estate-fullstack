@@ -49,21 +49,21 @@ const FooterSection = () => {
       <div className="bg-[#2176FF] py-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 px-4">
           <nav className="flex flex-wrap gap-6 text-white font-semibold text-sm justify-center md:justify-start w-full md:w-auto">
-            <a href="#" className="hover:underline">
+            <button type="button" className="hover:underline">
               Home
-            </a>
-            <a href="#" className="hover:underline">
+            </button>
+            <button type="button" className="hover:underline">
               Services
-            </a>
-            <a href="#" className="hover:underline">
+            </button>
+            <button type="button" className="hover:underline">
               Projects
-            </a>
-            <a href="#" className="hover:underline">
+            </button>
+            <button type="button" className="hover:underline">
               Testimonials
-            </a>
-            <a href="#" className="hover:underline">
+            </button>
+            <button type="button" className="hover:underline">
               Contact
-            </a>
+            </button>
           </nav>
           <div className="flex-1" /> {/* Spacer for left/right alignment */}
           <form

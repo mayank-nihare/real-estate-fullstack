@@ -12,18 +12,18 @@ const Header = () => (
       </a>
     </div>
     <nav className="hidden md:flex gap-8 text-sm font-semibold text-blue-900">
-      <a href="#" className="hover:text-orange-500">
+      <button type="button" className="hover:text-orange-500">
         HOME
-      </a>
-      <a href="#" className="hover:text-orange-500">
+      </button>
+      <button type="button" className="hover:text-orange-500">
         SERVICES
-      </a>
-      <a href="#" className="hover:text-orange-500">
+      </button>
+      <button type="button" className="hover:text-orange-500">
         ABOUT PROJECTS
-      </a>
-      <a href="#" className="hover:text-orange-500">
+      </button>
+      <button type="button" className="hover:text-orange-500">
         TESTIMONIALS
-      </a>
+      </button>
     </nav>
     <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2 rounded shadow transition">
       CONTACT
