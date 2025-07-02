@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from '../index';
 
 const ClientsAdmin = () => {
   const [clients, setClients] = useState([]);
@@ -17,7 +18,7 @@ const ClientsAdmin = () => {
 
   const fetchClients = () => {
     axios
-      .get("http://localhost:5000/api/clients")
+      .get(`${API_BASE_URL}/api/clients`)
       .then((res) => setClients(res.data))
       .catch(() => setClients([]));
   };
@@ -46,7 +47,7 @@ const ClientsAdmin = () => {
       formData.append("description", form.description);
       formData.append("designation", form.designation);
       if (form.image) formData.append("image", form.image);
-      await axios.post("http://localhost:5000/api/clients", formData, {
+      await axios.post(`${API_BASE_URL}/api/clients`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setSuccess("Client added!");
@@ -61,7 +62,7 @@ const ClientsAdmin = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this client?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/clients/${id}`);
       setClients(clients.filter((c) => c._id !== id));
       toast.success("Client deleted!");
     } catch {

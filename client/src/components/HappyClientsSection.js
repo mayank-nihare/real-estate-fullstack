@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from '../index';
 
 const HappyClientsSection = () => {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/clients")
+      .get(`${API_BASE_URL}/api/clients`)
       .then((res) => setClients(res.data))
       .catch(() => setClients([]));
   }, []);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from '../index';
 
 const SubscribersAdmin = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -10,7 +11,7 @@ const SubscribersAdmin = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/newsletter")
+      .get(`${API_BASE_URL}/api/newsletter`)
       .then((res) => {
         setSubscribers(res.data);
         setLoading(false);
@@ -25,7 +26,7 @@ const SubscribersAdmin = () => {
     if (!window.confirm("Are you sure you want to delete this subscriber?"))
       return;
     try {
-      await axios.delete(`http://localhost:5000/api/newsletter/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/newsletter/${id}`);
       setSubscribers(subscribers.filter((s) => s._id !== id));
       toast.success("Subscriber deleted!");
     } catch {

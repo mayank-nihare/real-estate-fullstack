@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from '../index';
 
 const ProjectsSection = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/projects")
+      .get(`${API_BASE_URL}/api/projects`)
       .then((res) => setProjects(res.data))
       .catch(() => setProjects([]));
   }, []);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import heroBg from "../assets/images/hero-bg.jpg";
+import { API_BASE_URL } from '../index';
 
 const HeroSection = () => {
   const [form, setForm] = useState({
@@ -21,7 +22,7 @@ const HeroSection = () => {
     setSuccess("");
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/contacts", form);
+      await axios.post(`${API_BASE_URL}/api/contacts`, form);
       setSuccess("Thank you! We will contact you soon.");
       setForm({ fullName: "", email: "", mobile: "", city: "" });
     } catch (err) {

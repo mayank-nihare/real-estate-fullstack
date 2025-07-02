@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from '../index';
 
 const ProjectsAdmin = () => {
   const [projects, setProjects] = useState([]);
@@ -12,7 +13,7 @@ const ProjectsAdmin = () => {
 
   const fetchProjects = () => {
     axios
-      .get("http://localhost:5000/api/projects")
+      .get(`${API_BASE_URL}/api/projects`)
       .then((res) => setProjects(res.data))
       .catch(() => setProjects([]));
   };
@@ -40,7 +41,7 @@ const ProjectsAdmin = () => {
       formData.append("name", form.name);
       formData.append("description", form.description);
       if (form.image) formData.append("image", form.image);
-      await axios.post("http://localhost:5000/api/projects", formData, {
+      await axios.post(`${API_BASE_URL}/api/projects`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setSuccess("Project added!");
@@ -56,7 +57,7 @@ const ProjectsAdmin = () => {
     if (!window.confirm("Are you sure you want to delete this project?"))
       return;
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/projects/${id}`);
       setProjects(projects.filter((p) => p._id !== id));
       toast.success("Project deleted!");
     } catch {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from '../index';
 
 const FooterSection = () => {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -8,7 +9,7 @@ const FooterSection = () => {
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/newsletter", {
+      const res = await fetch(`${API_BASE_URL}/api/newsletter`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: newsletterEmail }),

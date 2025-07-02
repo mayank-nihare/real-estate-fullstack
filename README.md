@@ -1,6 +1,6 @@
 # Real Estate Fullstack Project
 
-> **Note:** See the setup instructions carefully.
+> **Note:** See the setup, installation, and environment file setup instructions very carefully.
 
 ---
 
@@ -101,19 +101,17 @@ npm install
 cd ../client
 npm install
 ```
-
 ---
 
 ## Environment Variables
 
-### Backend (`server/.env`)
+Create a `.env` file in the `client` directory with the following content:
+
 ```
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-BASE_URL=http://localhost:5000
+REACT_APP_API_URL=https://real-estate-fullstack-9cgs.onrender.com
 ```
 
-> **Note:** You must create your own `.env` file in the `server` directory, or use the provided `.env.example` as shown above.
+This ensures the frontend will use the deployed backend for all API requests.
 
 ---
 
